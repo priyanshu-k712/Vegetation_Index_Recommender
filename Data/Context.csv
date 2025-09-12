@@ -1,0 +1,117 @@
+Index,Value,Meaning,Suggestion
+GLI,<=0.0,"Bare soil, residue, or plants under severe stress (pests, diseases, drought, defoliation, harvest stage).","Inspect field for bare patches, weeds, or pest/disease damage, If recently harvested, plan for next sowing or residue management,If not harvested, check for severe stress factors (e.g., irrigation failure, nutrient deficiency).
+Exclude soil/non-veg areas in analysis (masking).
+
+"
+GLI,0.0 – 0.15,"Sparse or stressed vegetation, early crop stage, or nutrient/water shortage.","Conduct ground truthing (soil tests, leaf samples).
+Apply corrective measures like irrigation or fertilizers if stress confirmed.
+Strengthen pest/disease scouting in these zones.
+If crop is at early stage → monitor for uniform emergence.
+"
+GLI,0.15 – 0.35,Healthy vegetation but not yet dense canopy (intermediate crop growth stage).,"Continue regular agronomic practices (weeding, irrigation scheduling, pest management).
+Track crop growth trends over time to ensure canopy keeps developing.
+Use this stage to adjust input management (fertilizer top-dressing, irrigation frequency).
+"
+GLI,>0.35,"Dense, healthy, green canopy with good chlorophyll content (peak growth).","Minimal immediate intervention required.
+Focus on disease/pest prevention rather than treatment.
+Use data for biomass estimation, yield prediction, and crop cover mapping.
+Monitor for excessive canopy shading, which can hide under-canopy stress.
+"
+VARI,<=0.0,"Non-vegetation surfaces (soil, roads, residues) OR image issues (haze, overexposure, shadow).","Check if values are due to actual bare soil or camera/atmosphere issues.
+If soil → plan next sowing, residue management, or cover crops.
+If haze/shadows → apply image correction (atmospheric calibration).
+"
+VARI,0.0 – 0.15,"Weak vegetation signal → sparse crop cover, early growth stage, or crop stress.","Conduct field scouting for nutrient deficiency, water stress, or pest attack.
+If early stage → monitor emergence uniformity.
+If stress confirmed → apply fertilizer, irrigation, or pest control as required.
+"
+VARI,0.15 – 0.35,Typical healthy canopy (balanced vegetation signal).,"Continue routine agronomic practices (irrigation scheduling, weed control, scouting).
+Use VARI trends for growth monitoring (since it’s stable under light/haze changes).
+Plan for mid-season input adjustments (fertilizer top-dressing, etc.).
+"
+VARI,>0.35,Dense green vegetation with strong chlorophyll signal.,"Minimal corrective action needed → indicates vigorous healthy crop growth.
+Use maps for vegetation segmentation, crop cover estimation, and biomass monitoring.
+Watch for saturation effects (dense canopy may hide under-canopy stress).
+"
+RGRI,<0.8,"Strong green dominance → healthy, actively growing vegetation.","No immediate corrective action needed.
+Continue routine crop monitoring and management (irrigation scheduling, pest scouting).
+Use for crop vigor mapping.
+"
+RGRI,0.8 – 1.2,"Strong green dominance → healthy, actively growing vegetation.","No immediate corrective action needed.
+Continue routine crop monitoring and management (irrigation scheduling, pest scouting).
+Use for crop vigor mapping.
+"
+RGRI,>1.2,"Red dominance → stressed vegetation, senescence, dry crops, or soil exposure.","Immediate field inspection for:
+Drought symptoms (wilting, leaf curling).
+Nutrient stress (especially nitrogen).
+Pest/disease damage.
+Consider irrigation, nutrient application, or pest control.
+If late season crop → may be natural senescence (no action needed).
+"
+NGRDI,<=0.0,"Red or soil dominance → bare soil, residues, or senescent/dry vegetation.","Inspect if due to soil exposure (patchy sowing, crop gaps).
+If standing crop present → check for drought stress, disease, or maturity/senescence.
+Verify image exposure/illumination to rule out artifacts.
+"
+NGRDI,0.0 – 0.2,Weak greenness → early crop growth or mild stress.,"Conduct field sampling for soil nutrients and crop hydration.
+If early stage → monitor uniform germination and seedling health.
+If established crop → apply fertilizer or irrigation if stress confirmed.
+"
+NGRDI,0.2 – 0.4,"Healthy vegetation, balanced canopy development.","Continue routine agronomic practices (irrigation, weed/pest management).
+Use NGRDI values to detect spatial variability across the field.
+Track growth trends for yield prediction.
+"
+NGRDI,>0.4,"Very green, dense canopy with strong chlorophyll content.","Indicates peak crop health → minimal interventions required.
+Use data for biomass estimation, canopy cover analysis, and yield forecasting.
+Watch for possible saturation effects in dense crops.
+"
+EXR,Low,"Green signal dominates → healthy, actively growing vegetation.","No major intervention needed.
+Continue routine agronomic practices (irrigation, fertilization, pest monitoring).
+Use ExR alongside ExG for better vegetation vs. soil differentiation.
+"
+EXR,Moderate,"Mixed green and red signal → could mean early crop stress OR crops with natural reddish pigments (e.g., some fruiting plants, anthocyanin accumulation).","Perform ground truthing to separate stress from natural plant trait.
+Check soil moisture status and nutrient balance (especially nitrogen, phosphorus).
+If stress confirmed → apply corrective measures (irrigation, nutrient supplements).
+"
+EXR,High,"Strong red dominance → likely senescence, disease infection, nutrient deficiency, frost damage, or bare soil exposure.","Immediate field inspection to confirm cause:  Nutrient deficiency (chlorosis/reddish leaves).  Pests/disease damaging foliage.  Frost/heat stress symptoms.  Soil patches with no crop cover.  Apply targeted interventions (fertilization, pest/disease control, irrigation) as needed.  If crop is mature → may simply indicate natural senescence (no action required)."
+TGI,Low,"Low chlorophyll → stressed plants (nutrient deficiency, water shortage, or disease).","Conduct leaf chlorophyll tests (e.g., SPAD meter).  Check soil nutrients (especially nitrogen).  Review irrigation schedule for possible water stress.  Apply corrective measures (fertilization, irrigation, or pest/disease control)."
+TGI,Moderate,Average chlorophyll content → plants are generally healthy but not at peak greenness.,"Continue standard agronomic practices (fertilizer management, irrigation, weed/pest control).
+Monitor time-series TGI trends to ensure chlorophyll levels are stable or improving.
+Adjust nutrient top-dressing if crop uptake appears suboptimal.
+"
+TGI,High,"High chlorophyll → vigorous crop growth, dense green canopy.","Crop is thriving, but be mindful of excess vegetative growth.
+Optimize nitrogen management (consider split applications to prevent lodging or delayed maturity).
+Use TGI for yield potential estimation and biomass assessment.
+"
+CIVE,Very Low,"Likely non-vegetation areas such as soil, residue, or man-made surfaces.","Mask and exclude these pixels from vegetation analysis.
+Conduct ground validation to confirm non-vegetation patches.
+If unintended bare areas → check for poor crop establishment or planting gaps.
+"
+CIVE,Low to Moderate,"Partial vegetation signal → could be stressed plants, sparse canopy, or mixed soil–vegetation pixels.","Perform ground truth checks for nutrient stress, irrigation issues, or early pest damage.
+Apply corrective agronomy practices if stress is confirmed (fertilizer, irrigation, pest management).
+Use in combination with other vegetation indices (e.g., ExG, VARI) for better accuracy.
+"
+CIVE,High,Strong vegetation signal → clear indication of healthy green canopy.,"Use CIVE for vegetation segmentation, canopy mapping, and crop cover analysis.
+Cross-check with other indices (e.g., GLI, NGRDI) to reduce false positives from shadows or bright soil.
+Minimal agronomic intervention required unless variability is detected across the field.
+"
+MGRVI,Low,"Weak or no green signal → bare soil, residues, or stressed/senescent crops.","Inspect field for stress causes (nutrient deficiency, drought, pest/disease).
+If non-vegetation → mask out from analysis.
+Check imaging conditions (lighting/shadows) to rule out artifacts.
+"
+MGRVI,Moderate,Normal vegetation health → canopy is present but not at peak greenness.,"Use for monitoring vegetation trends over time.
+Combine with VARI or ExG for more robust vegetation detection under varying light.
+Apply routine agronomy (fertilizer scheduling, irrigation, pest management).
+"
+MGRVI,High,"Strong green dominance → dense, healthy canopy with high vigor.","Minimal corrective action required.
+Use for crop classification, canopy cover mapping, and biomass/yield estimation.
+Continue preventive monitoring for pests/diseases even in healthy zones.
+"
+VNDVI,0.1 – 0.5 (Healthy),Leaf has strong green reflectance; good photosynthetic activity.,"Maintain normal care (watering, sunlight, nutrients)."
+VNDVI,0.0 – 0.1 (Moderate),"Possible early stress (water deficit, nutrient imbalance, or beginning disease).","Monitor plant closely, check soil moisture & nutrient levels. Apply light fertilization if needed."
+VNDVI,<0.0 or >0.6 (Unhealthy),"Very low/negative → poor vegetation, bare soil, or dead tissue. Very high → sensor or illumination issue.","If genuine: treat for stress (adjust irrigation, check for pests/disease). If abnormal high → review data quality."
+MGRVI,0.2 – 0.6 (Healthy),Clear separation from soil; leaf is actively photosynthesizing.,Maintain current growing conditions.
+MGRVI,0.05 – 0.2 (Moderate),Reduced greenness; plant may be under mild stress.,"Investigate nutrient deficiency (esp. nitrogen), adjust fertilization/irrigation."
+MGRVI,<0.0 or >0.7 (Unhealthy),Negative = unhealthy or soil exposure. Very high often artifact.,"Remove diseased leaves if localized, improve nutrient & water supply."
+VARI,0.1 – 0.4 (Healthy),"Good chlorophyll content, balanced canopy cover.",Continue normal management practices.
+VARI,0.0 – 0.1 (Moderate),"Possible early signs of stress, canopy thinning, or shading effects.","Inspect for pest/disease, optimize sunlight exposure."
+VARI,<0.0 or >0.5 (Unhealthy),Negative → severe stress or soil background; high → reflectance anomaly.,"Take corrective actions: pest control, irrigation, nutrient management. Validate if extreme high due to image noise."
