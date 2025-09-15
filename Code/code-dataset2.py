@@ -6,23 +6,24 @@ import tensorflow as tf
 from tensorflow.keras import layers, models, regularizers # Import regularizers
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 import matplotlib.pyplot as plt
-from google.colab import drive # Import for Google Drive mounting
+# from google.colab import drive # Import for Google Drive mounting
 from sklearn.metrics import r2_score # Import for R2 score calculation
+import sys
 
 # --- 0. Mount Google Drive (for Colab) ---
 # This step is crucial to access your dataset stored in Google Drive.
 # When you run this, a link will appear, click it, choose your Google account,
 # copy the authorization code, and paste it back into the Colab cell.
-print("Mounting Google Drive...")
-try:
-    drive.mount('/content/drive')
-    print("Google Drive mounted successfully.")
-except Exception as e:
-    print(f"Error mounting Google Drive: {e}")
-    print("Please ensure you authorize Google Drive access when prompted.")
+# print("Mounting Google Drive...")
+# try:
+#     drive.mount('/content/drive')
+#     print("Google Drive mounted successfully.")
+# except Exception as e:
+#     print(f"Error mounting Google Drive: {e}")
+#     print("Please ensure you authorize Google Drive access when prompted.")
 
 # --- Constants ---
-DATASET_DIR = '/content/drive/MyDrive/Dataset_2' # Your dataset directory
+DATASET_DIR = '/Dataset_Images/Multispectral_Images'  # Your dataset directory
 IMG_HEIGHT = 128
 IMG_WIDTH = 128
 BATCH_SIZE = 16
@@ -141,7 +142,7 @@ def generate_and_load_dataset_from_files(dataset_dir):
         # Ensure float type for calculation and normalize pixel values to [0, 1]
         blue_for_vndvi = blue_band.astype(np.float32) / 255.0
         green_for_vndvi = green_band.astype(np.float32) / 255.0
-        red_for_vndvi = red_band.astype(np.float32) / 255.0
+        red_for_vndvi = red_band.astype(np.float32) / 255
 
         # Add a small epsilon to avoid division by zero for negative exponents if value is zero
         epsilon = 1e-6
@@ -173,7 +174,7 @@ X, y = generate_and_load_dataset_from_files(DATASET_DIR)
 # Check if data was loaded successfully
 if X.size == 0 or y.size == 0:
     print("No data loaded. Exiting.")
-    exit() # Exit if no data is found, preventing further errors
+    sys.exit() # Exit if no data is found, preventing further errors
 
 # --- 2. Data Splitting ---
 # Use the loaded data for splitting
@@ -260,7 +261,7 @@ model.summary()
 early_stopping = EarlyStopping(
     monitor='val_loss', # Monitor validation loss
     patience=20,        # Number of epochs with no improvement after which training will be stopped
-    restore_best_weights=True # Restore model weights from the epoch with the best value of the monitored quantity
+    restore_best_weights=True # Restore model vndvi_weights from the epoch with the best value of the monitored quantity
 )
 
 # ModelCheckpoint: Save the model after every epoch if validation loss improves.
